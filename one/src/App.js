@@ -11,34 +11,57 @@ class App extends Component {
     ],
     showPersons:false
   }
-  switchName=(newName) =>{
-    this.setState({
-      persons:[
-        { name: newName, age:12 },
-      { name :'Mark 2.0', age:23 },
-      { name :'Marshall 2.0', age:32}
-      ]
-    })
-    this.state.persons[0].name = "Max 2.0";
-  }
+  // switchName=(newName) =>{
+  //   this.setState({
+  //     persons:[
+  //       { name: newName, age:12 },
+  //     { name :'Mark 2.0', age:23 },
+  //     { name :'Marshall 2.0', age:32}
+  //     ]
+  //   })
+  //   this.state.persons[0].name = "Max 2.0";
+  // }
 
 
-  nameChange=(event)=>{
-    this.setState(
-      {
-        persons:[
-          {name : event.target.value , age:29 },
-          { name :'Mark', age:23 },
-          { name :'Marshall', age:32}
-        ]
-      }
-    )
+    nameChange=(event)=>{
+      
+      this.setState(
+        {
+          persons:[
+            {name : event.target.value , age:29 },
+            { name :'Mark', age:23 },
+            { name :'Marshall', age:32}
+          ]
+        }
+      )
 
-  }
+    }
+
+  // nameChange=($event,index)=>{
+  //   const people = this.state.persons;
+  //   console.log($event.target.value );
+  //   //people[index].name= event.target.value;
+  //   this.setState(
+  //     {
+  //       persons:people
+  //     }
+  //   )
+
+  // }
+
+  
 
   togglePersons=()=>{
     const show= this.state.showPersons;
     this.setState({showPersons:!show});
+  }
+
+  deletePerson=(index)=>{
+    const people = this.state.persons;
+    people.splice(index,1);
+    this.setState({persons:people})
+
+
   }
       render() {
         const style ={
@@ -54,10 +77,11 @@ class App extends Component {
         {
           contnt = (
             <div >
-              {this.state.persons.map(ppl=>{
+              {this.state.persons.map((ppl,index)=>{
                 return <Person name={ppl.name} 
                                 age={ppl.age} 
-                                changed={this.nameChange}></Person>
+                                changed={this.nameChange}
+                                click={()=>this.deletePerson(index)}></Person>
               }) }
             </div>
 
