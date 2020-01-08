@@ -54,9 +54,11 @@ class App extends Component {
         {
           contnt = (
             <div >
-              <Person name ={this.state.persons[0].name} age ={this.state.persons[0].age} click={this.switchName} changed={this.nameChange}>"Yo I am an engineer"</Person>
-              <Person name ={this.state.persons[1].name} age ={this.state.persons[1].age}   >"I love Badminton"</Person>
-              <Person name ={this.state.persons[2].name} age ={this.state.persons[2].age}  >"I am done with hobbies"</Person>
+              {this.state.persons.map(ppl=>{
+                return <Person name={ppl.name} 
+                                age={ppl.age} 
+                                changed={this.nameChange}></Person>
+              }) }
             </div>
 
           )
