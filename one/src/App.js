@@ -57,7 +57,9 @@ class App extends Component {
   }
 
   deletePerson=(index)=>{
-    const people = this.state.persons;
+    const people = this.state.persons.slice();
+    //or use spread operator like this:
+    //const people = [...this.state.persons]
     people.splice(index,1);
     this.setState({persons:people})
 
