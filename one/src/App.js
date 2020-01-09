@@ -5,9 +5,9 @@ import './App.css';
 class App extends Component {
   state = {
     persons:[
-      { name:'Max', age:12 },
-      { name :'Mark', age:23 },
-      { name :'Marshall', age:32}
+      { id:'1',name:'Max', age:12 },
+      { id:'2',name :'Mark', age:23 },
+      { id:'3',name :'Marshall', age:32}
     ],
     showPersons:false
   }
@@ -23,31 +23,48 @@ class App extends Component {
   // }
 
 
-    nameChange=(event)=>{
+    // nameChange=(event)=>{
       
-      this.setState(
-        {
-          persons:[
-            {name : event.target.value , age:29 },
-            { name :'Mark', age:23 },
-            { name :'Marshall', age:32}
-          ]
-        }
-      )
+    //   this.setState(
+    //     {
+    //       persons:[
+    //         { id:'1', name : event.target.value , age:29 },
+    //         { id:'2', name :'Mark', age:23 },
+    //         { id:'3', name :'Marshall', age:32}
+    //       ]
+    //     }
+    //   )
 
-    }
+    // }
 
-  // nameChange=($event,index)=>{
-  //   const people = this.state.persons;
-  //   console.log($event.target.value );
-  //   //people[index].name= event.target.value;
-  //   this.setState(
-  //     {
-  //       persons:people
-  //     }
-  //   )
+  // nameChange=(event,id)=>{
+  //   const personIndex = this.state.persons.findIndex(p=>{
+  //     return p.id == id;
+  //   });
+  //   const people ={
+  //     ...this.state.persons[personIndex]
+  //   };
+  //   // console.log($event.target.value );
+  //   // //people[index].name= event.target.value;
+  //   // this.setState(
+  //   //   {
+  //   //     persons:people
+  //   //   }
+  //   //)
 
   // }
+
+  nameChange=(event,index)=>{
+    let people = this.state.persons;
+    people[index].name= event.target.value;
+
+    console.log(people[index].name);
+    this.setState(
+      {
+        persons:people
+      }
+    )
+  }
 
   
 
@@ -82,8 +99,9 @@ class App extends Component {
               {this.state.persons.map((ppl,index)=>{
                 return <Person name={ppl.name} 
                                 age={ppl.age} 
-                                changed={this.nameChange}
-                                click={()=>this.deletePerson(index)}></Person>
+                                changed={(event)=>this.nameChange(event, index)}
+                                click={()=>this.deletePerson(index)}
+                                key={index}></Person>
               }) }
             </div>
 
