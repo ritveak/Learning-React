@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import Person from './Person/Person.js' ;
 import './App.css';
-
+import Radium from 'radium';
 class App extends Component {
   state = {
     persons:[
@@ -89,7 +89,11 @@ class App extends Component {
           font: 'inherit',
           border: '1px solid blue',
           padding:'8px',
-          cursor:'pointer'
+          cursor:'pointer',
+          ':hover':{
+            backgroundColor:'lightgreen',
+            color:'black'
+          }
         };
         
         let contnt = null;
@@ -108,12 +112,23 @@ class App extends Component {
 
           );
           style.backgroundColor='maroon';
+          style[':hover']={
+            backgroundColor:'red',
+            color:'black'
+          }
+        }
+        const classes=[];
+        if(this.state.persons.length<=2){
+          classes.push('red');//just red
+        }
+        if(this.state.persons.length<=1){
+          classes.push('bold');//red and bold
         }
 
         return (
           <div className="App" >
             <h1>This is React App</h1>
-            <p>This part is main app section</p>
+            <p className={classes.join(' ')}>This part is main app section</p>
             <button style={style} onClick={this.togglePersons}>Toggle</button>
           {contnt}
          </div>
@@ -154,4 +169,4 @@ class App extends Component {
   //   );
   // }
 
-export default App;
+export default Radium(App);
