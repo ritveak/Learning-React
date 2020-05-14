@@ -1,0 +1,7 @@
+table{
+ border-style: dashed;
+ border-color: green;
+}
+thead{
+  background-color: cyan;
+}
