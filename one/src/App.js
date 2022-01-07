@@ -11,48 +11,6 @@ class App extends Component {
     ],
     showPersons:false
   }
-  // switchName=(newName) =>{
-  //   this.setState({
-  //     persons:[
-  //       { name: newName, age:12 },
-  //     { name :'Mark 2.0', age:23 },
-  //     { name :'Marshall 2.0', age:32}
-  //     ]
-  //   })
-  //   this.state.persons[0].name = "Max 2.0";
-  // }
-
-
-    // nameChange=(event)=>{
-      
-    //   this.setState(
-    //     {
-    //       persons:[
-    //         { id:'1', name : event.target.value , age:29 },
-    //         { id:'2', name :'Mark', age:23 },
-    //         { id:'3', name :'Marshall', age:32}
-    //       ]
-    //     }
-    //   )
-
-    // }
-
-  // nameChange=(event,id)=>{
-  //   const personIndex = this.state.persons.findIndex(p=>{
-  //     return p.id == id;
-  //   });
-  //   const people ={
-  //     ...this.state.persons[personIndex]
-  //   };
-  //   // console.log($event.target.value );
-  //   // //people[index].name= event.target.value;
-  //   // this.setState(
-  //   //   {
-  //   //     persons:people
-  //   //   }
-  //   //)
-
-  // }
 
   nameChange=(event,index)=>{
     let people = this.state.persons;
